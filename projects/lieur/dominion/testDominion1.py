@@ -13,7 +13,7 @@ from collections import defaultdict
 #Get player names
 player_names = ["Annie","*Ben","*Carla"]
 
-#number of curses and victory cards
+#Set number of curses and victory cards
 nV, nC = testUtility.set_vc_number(player_names)
 
 #Define box
