@@ -29,32 +29,16 @@ supply = testUtility.set_supply(box, player_names, nV, nC)
 
 # Initialize the trash
 trash = []
-
+# Test silver and gold = 0
 supply["Copper"]=[Dominion.Copper()]*(60-len(player_names)*7)
 supply["Silver"]=[Dominion.Silver()]*0
 supply["Gold"]=[Dominion.Gold()]*0
+
 # Construct the Player objects
 players = testUtility.set_players(player_names)
 
 # Play the game
-turn = 0
-while not Dominion.gameover(supply):
-    turn += 1
-    print("\r")
-    for value in supply_order:
-        print(value)
-        for stack in supply_order[value]:
-            if stack in supply:
-
-                print(stack, len(supply[stack]))
-    print("\r")
-    for player in players:
-        print(player.name, player.calcpoints())
-    print("\rStart of turn " + str(turn))
-    for player in players:
-        if not Dominion.gameover(supply):
-            print("\r")
-            player.turn(players, supply, trash)
+testUtility.play_game(supply, supply_order, players, trash)
 
 # Final score
 testUtility.display_game_results(players)

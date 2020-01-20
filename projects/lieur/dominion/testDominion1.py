@@ -36,24 +36,8 @@ trash = []
 players = testUtility.set_players(player_names)
 
 # Play the game
-turn = 0
-while not Dominion.gameover(supply):
-    turn += 1
-    print("\r")
-    for value in supply_order:
-        print(value)
-        for stack in supply_order[value]:
-            if stack in supply:
+testUtility.play_game(supply, supply_order, players, trash)
 
-                print(stack, len(supply[stack]))
-    print("\r")
-    for player in players:
-        print(player.name, player.calcpoints())
-    print("\rStart of turn " + str(turn))
-    for player in players:
-        if not Dominion.gameover(supply):
-            print("\r")
-            player.turn(players, supply, trash)
 
 # Final score
 testUtility.display_game_results(players)

@@ -40,8 +40,8 @@ def define_box(nV):
     box["Moat"]=[Dominion.Moat()]*10
     box["Council Room"]=[Dominion.Council_Room()]*10
     box["Witch"]=[Dominion.Witch()]*10
-    #box["Bureaucrat"]=[Dominion.Bureaucrat()]*10
-    #box["Militia"]=[Dominion.Militia()]*10
+    box["Bureaucrat"]=[Dominion.Bureaucrat()]*10
+    box["Militia"]=[Dominion.Militia()]*10
     box["Spy"]=[Dominion.Spy()]*10
     box["Thief"]=[Dominion.Thief()]*10
     box["Throne Room"]=[Dominion.Throne_Room()]*10
@@ -82,6 +82,25 @@ def set_players(player_names):
         else:
             players.append(Dominion.Player(name))
     return players
+def play_game(supply, supply_order, players, trash):
+    turn = 0
+    while not Dominion.gameover(supply):
+        turn += 1
+        print("\r")
+        for value in supply_order:
+            print(value)
+            for stack in supply_order[value]:
+                if stack in supply:
+
+                    print(stack, len(supply[stack]))
+        print("\r")
+        for player in players:
+            print(player.name, player.calcpoints())
+        print("\rStart of turn " + str(turn))
+        for player in players:
+            if not Dominion.gameover(supply):
+                print("\r")
+                player.turn(players, supply, trash)
 
 #Define display_game_results
 def display_game_results(players):
