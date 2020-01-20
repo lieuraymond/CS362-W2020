@@ -40,8 +40,8 @@ def define_box(nV):
     box["Moat"]=[Dominion.Moat()]*10
     box["Council Room"]=[Dominion.Council_Room()]*10
     box["Witch"]=[Dominion.Witch()]*10
-    box["Bureaucrat"]=[Dominion.Bureaucrat()]*10
-    box["Militia"]=[Dominion.Militia()]*10
+    #box["Bureaucrat"]=[Dominion.Bureaucrat()]*10
+    #box["Militia"]=[Dominion.Militia()]*10
     box["Spy"]=[Dominion.Spy()]*10
     box["Thief"]=[Dominion.Thief()]*10
     box["Throne Room"]=[Dominion.Throne_Room()]*10
@@ -71,6 +71,18 @@ def set_supply(box, player_names, nV, nC):
     supply["Curse"]=[Dominion.Curse()]*nC
     return supply
 
+#Define set_players
+def set_players(player_names):
+    players = []
+    for name in player_names:
+        if name[0] == "*":
+            players.append(Dominion.ComputerPlayer(name[1:]))
+        elif name[0] == "^":
+            players.append(Dominion.TablePlayer(name[1:]))
+        else:
+            players.append(Dominion.Player(name))
+    return players
+
 #Define display_game_results
 def display_game_results(players):
     dcs = Dominion.cardsummaries(players)
@@ -88,13 +100,3 @@ def display_game_results(players):
     print("\nGAME OVER!!!\n" + winstring + "\n")
     print(dcs)
 
-def set_players(player_names):
-    players = []
-    for name in player_names:
-        if name[0] == "*":
-            players.append(Dominion.ComputerPlayer(name[1:]))
-        elif name[0] == "^":
-            players.append(Dominion.TablePlayer(name[1:]))
-        else:
-            players.append(Dominion.Player(name))
-    return players
