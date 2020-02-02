@@ -79,9 +79,11 @@ def set_players(player_names):
             players.append(Dominion.ComputerPlayer(name[1:]))
         elif name[0] == "^":
             players.append(Dominion.TablePlayer(name[1:]))
-        else:
+        else
             players.append(Dominion.Player(name))
     return players
+
+#define play game
 def play_game(supply, supply_order, players, trash):
     turn = 0
     while not Dominion.gameover(supply):
