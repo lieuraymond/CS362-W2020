@@ -80,4 +80,4 @@ class TestAssignment(TestCase):
         self.assignment7.assign_grade(9)
         self.assertEqual(self.assignment7.grade, 9)
         self.assignment7.assign_grade(12)
-        self.assertEqual(-1, self.assignment7.grade)
+        self.assertEqual(None, self.assignment7.grade)
