@@ -51,5 +51,5 @@ class Assignment:
     def assign_grade(self, grade):
         self.grade = grade
         if grade >= self.max_score:
-            self.grade = -1
+            self.grade = None
         return
